@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "194104639152",
+    "firebase_url": "https://bookingsystem-cd0ea.firebaseio.com",
+    "project_id": "bookingsystem-cd0ea",
+    "storage_bucket": "bookingsystem-cd0ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194104639152:android:7135785af25178404f4575",
+        "android_client_info": {
+          "package_name": "tw.dworker.booking_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194104639152-vqjcr7cadfb5utu9edju10tenb3bh409.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tw.dworker.booking_system",
+            "certificate_hash": "9b0cd66830297e18b338ff2e0947a727e9ad581f"
+          }
+        },
+        {
+          "client_id": "194104639152-oprc595p2nm4ra26nmgipjrclf034qq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmMCEupnDnAuJnnd1KzoU-I42CuFEB9b8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194104639152-oprc595p2nm4ra26nmgipjrclf034qq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
