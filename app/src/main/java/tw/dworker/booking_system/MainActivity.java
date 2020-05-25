@@ -20,17 +20,20 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int REQUEST_LOGIN = 100;
-    boolean logon = false;
+    private static final int REQUEST_LOGIN = 100; //回傳的值
+    boolean logon = false; //進入主頁前判斷是否已登入
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //判斷login回傳的值
         if (!logon){
             Intent intent = new Intent(this,LoginActivity.class);
             startActivityForResult(intent,REQUEST_LOGIN);
         }
+        //判斷login回傳的值
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,18 +48,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //回傳的值：result code是否正確
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_LOGIN){
             if (resultCode != RESULT_OK) {
                 finish();
-            }else{
-                Log.i("Intent Data", data.getDataString());
             }
+/*            else{
+                Log.i("Intent Data", data.getDataString());
+            }*/
         }
 
     }
+    //回傳的值：result code是否正確
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -80,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getBookedList(DataSnapshot dataSnapshot){
+/*    public void getBookedList(DataSnapshot dataSnapshot){
         DataSnapshot lab1 = dataSnapshot.child("lab1");
         DataSnapshot lab2 = dataSnapshot.child("lab2");
         Calendar cal = Calendar.getInstance();
@@ -101,5 +107,5 @@ public class MainActivity extends AppCompatActivity {
         for(DataSnapshot data: dataSnapshot.getChildren()) {
             Log.i("equipment=", data.getValue().toString());
         }
-    }
+    }*/
 }
