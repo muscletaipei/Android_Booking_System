@@ -1,5 +1,6 @@
 package tw.dworker.booking_system;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -7,21 +8,31 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.function.Function;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOGIN = 100; //回傳的值
     boolean logon = false; //進入主頁前判斷是否已登入
+    String[] functions = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +57,43 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        //recycler
+        RecyclerView recyclerView = findViewById(R.id.recycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //adapter
+        FunctionAdapter adapter = new FunctionAdapter(this);
+        recyclerView.setAdapter(adapter);
+    }
+    //ViewHolder 類別
+    public class IconAdapter extends RecyclerView.Adapter<IconAdapter.IconHolder> {
+        @NonNull
+        @Override
+        public IconHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull IconHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+
+        public class IconHolder extends RecyclerView.ViewHolder{
+            ImageView iconImage;
+            TextView nameText;
+
+            public IconHolder(@NonNull View itemView) {
+                super(itemView);
+                iconImage = itemView.findViewById(R.id.item_icon);
+                nameText = itemView.findViewById(R.id.item_name);
+
+            }
+        }
     }
 
     //回傳的值：result code是否正確
