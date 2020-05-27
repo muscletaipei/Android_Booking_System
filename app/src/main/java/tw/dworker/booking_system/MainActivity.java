@@ -2,6 +2,7 @@ package tw.dworker.booking_system;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,25 +29,26 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.function.Function;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOGIN = 100; //回傳的值
+    private static final String TAG = MainActivity.class.getSimpleName();
     boolean logon = false; //進入主頁前判斷是否已登入
-    String[] functions = null;
+    private List<Function> functions;
+    //    String[] functions = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         //判斷login回傳的值
         if (!logon){
             Intent intent = new Intent(this,LoginActivity.class);
             startActivityForResult(intent,REQUEST_LOGIN);
         }
         //判斷login回傳的值
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -58,29 +61,61 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //recycler
+        setupFunctions();
+
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //set different Layout
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));  //style 1
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));  //style 2
+
         //adapter
-        FunctionAdapter adapter = new FunctionAdapter(this);
+//        FunctionAdapter adapter = new FunctionAdapter(this);
+        IconAdapter adapter = new IconAdapter();
         recyclerView.setAdapter(adapter);
     }
+
+    private void setupFunctions() {
+        functions = new ArrayList<>();
+        String[] funcs = getResources().getStringArray(R.array.functions);
+        functions.add(new Function(funcs[0],R.drawable.lab1));
+        functions.add(new Function(funcs[1],R.drawable.lab2));
+        functions.add(new Function(funcs[2],R.drawable.lab3));
+        functions.add(new Function(funcs[3],R.drawable.lab4));
+        functions.add(new Function(funcs[4],R.drawable.lab5));
+        functions.add(new Function(funcs[5],R.drawable.lab6));
+        functions.add(new Function(funcs[6],R.drawable.lab7));
+        functions.add(new Function(funcs[7],R.drawable.lab8));
+        functions.add(new Function(funcs[8],R.drawable.lab9));
+        functions.add(new Function(funcs[9],R.drawable.exit_icons));
+    }
+
     //ViewHolder 類別
     public class IconAdapter extends RecyclerView.Adapter<IconAdapter.IconHolder> {
         @NonNull
         @Override
         public IconHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return null;
+            View view = getLayoutInflater().inflate(R.layout.item_icon,parent,false);
+            return new IconHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull IconHolder holder, int position) {
-
+            final Function function = functions.get(position);
+            holder.nameText.setText(function.getName());
+            holder.iconImage.setImageResource(function.getIcon());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClicked(function);
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
-            return 0;
+
+            return functions.size();
         }
 
         public class IconHolder extends RecyclerView.ViewHolder{
@@ -96,11 +131,41 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void itemClicked(Function function) {
+        Log.d(TAG, "itemClicked:" + function.getName());
+        switch (function.getIcon()){
+            case R.drawable.lab1:
+                break;
+            case  R.drawable.lab2:
+                break;
+            case R.drawable.lab3:
+                break;
+            case R.drawable.lab4:
+                break;
+            case R.drawable.lab5:
+                break;
+            case R.drawable.lab6:
+                break;
+            case R.drawable.lab7:
+                break;
+            case R.drawable.lab8:
+                break;
+            case R.drawable.lab9:
+                break;
+            case R.drawable.exit_icons:
+                finish();
+                break;
+        }
+    }
+
     //回傳的值：result code是否正確
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_LOGIN){
+            Toast
+                    .makeText(this,"歡迎光臨，登入成功。",Toast.LENGTH_SHORT)
+                    .show();
             if (resultCode != RESULT_OK) {
                 finish();
             }

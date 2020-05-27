@@ -3,6 +3,9 @@ package tw.dworker.booking_system;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +32,7 @@ import java.util.Date;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName(); //TAG
     EditText mAccount;
-    EditText mPassword;
+    private EditText mPassword;
     CheckBox mCheck;
 
     @Override
@@ -37,19 +40,27 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Fragment
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(R.id.container_news, NewsFragment.getInstance());
+        fragmentTransaction.commit();
+
         //set SharePreferences
-/*        getSharedPreferences("Booked", MODE_PRIVATE)
+        //存入 data
+        getSharedPreferences("Booked", MODE_PRIVATE)
                 .edit()
-                .putInt("LEVEL",3)
-                .putString("NAME","Joe")
+                .putInt("LEVEL", 3)
+                .putString("NAME", "Joe")
                 .commit();
+        //寫入 data
         int level = getSharedPreferences("Joe", MODE_PRIVATE)
                 .getInt("LEVEL", 0);
         Log.d(TAG, "onCreate:" + level);
-
+        //讀取data
         String userid = getSharedPreferences("Booked",MODE_PRIVATE)
                 .getString("USERID","");
-        mAccount.setText(userid);*/
+        mAccount.setText(userid);
         //set SharePreferences
 
         mAccount = findViewById(R.id.mAccount);
@@ -87,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        Log.i(" login"," OK");
+//        Log.i(" login"," OK");
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         database.getReference("users").child(userid).child("password")
@@ -97,12 +108,12 @@ public class LoginActivity extends AppCompatActivity {
                         String pw = (String) dataSnapshot.getValue();
                         Log.i("Firebase Connected"," OK");
                         if (pw.equals(passwd)){
-                            // save user id 寫入先前已登入成功的userid
-/*                            getSharedPreferences("Booked",MODE_PRIVATE)
+                            // getSharePreferences: save user id 寫入先前已登入成功的userid
+                            getSharedPreferences("Booked",MODE_PRIVATE)
                                     .edit()
                                     .putString("USERID",userid)
-                                    .apply();*/
-                            // save user id 寫入先前已登入成功的userid
+                                    .apply();
+                            //  getSharePreferences: save user id 寫入先前已登入成功的userid
                             setResult(RESULT_OK);
 
 //                            Log.i("Firebase Connected"," OK-2");
