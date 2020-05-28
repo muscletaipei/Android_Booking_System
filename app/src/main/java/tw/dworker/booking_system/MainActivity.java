@@ -78,16 +78,14 @@ public class MainActivity extends AppCompatActivity {
     private void setupFunctions() {
         functions = new ArrayList<>();
         String[] funcs = getResources().getStringArray(R.array.functions);
-        functions.add(new Function(funcs[0],R.drawable.lab1));
-        functions.add(new Function(funcs[1],R.drawable.lab2));
-        functions.add(new Function(funcs[2],R.drawable.lab3));
-        functions.add(new Function(funcs[3],R.drawable.lab4));
-        functions.add(new Function(funcs[4],R.drawable.lab5));
-        functions.add(new Function(funcs[5],R.drawable.lab6));
-        functions.add(new Function(funcs[6],R.drawable.lab7));
-        functions.add(new Function(funcs[7],R.drawable.lab8));
-        functions.add(new Function(funcs[8],R.drawable.lab9));
-        functions.add(new Function(funcs[9],R.drawable.exit_icons));
+        functions.add(new Function(funcs[0],R.drawable.about));
+        functions.add(new Function(funcs[1],R.drawable.lab1));
+        functions.add(new Function(funcs[2],R.drawable.lab2));
+        functions.add(new Function(funcs[3],R.drawable.lab3));
+        functions.add(new Function(funcs[4],R.drawable.lab4));
+        functions.add(new Function(funcs[5],R.drawable.lab5));
+        functions.add(new Function(funcs[6],R.drawable.lab6));
+        functions.add(new Function(funcs[7],R.drawable.exit_icons));
     }
 
     //ViewHolder 類別
