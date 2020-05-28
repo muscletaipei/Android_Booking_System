@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Booking_System</string>
-    <string name="str1">Booking System</string>
-    <string name="str2">預約系統</string>
-    <string name="str3">帳號</string>
-    <string name="str4">登入系統</string>
-    <string name="str5">密碼</string>
-    <string name="str6">請輸入帳號</string>
-    <string name="str7">請輸入密碼</string>
-    <string name="str8">顯示密碼</string>
-    <string name="str9">登入</string>
-    <string name="str10">離開</string>
-    <string name="str11">開始預約</string>
+    <string name="app_name">Booking System</string>
+    <string name="str1">Booking_System</string>
+    <string name="str2">Booking System</string>
+    <string name="str3">Account</string>
+    <string name="str4">Login System</string>
+    <string name="str5">Password</string>
+    <string name="str6">Please input Account</string>
+    <string name="str7">Please input Password</string>
+    <string name="str8">Show PassWD</string>
+    <string name="str9">Login</string>
+    <string name="str10">Exit</string>
+    <string name="str11">Start Booking</string>
 
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
@@ -21,4 +21,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="str12">Remember AT</string>
+    <string name="str13">Login</string>
+    <string name="str14">News</string>
+    <string name="str15">Login result</string>
+    <string name="str16">Login failed</string>
+    <string name="str17">Confirm</string>
+    <string name="str18">Welcome, login successfully.</string>
 </resources>

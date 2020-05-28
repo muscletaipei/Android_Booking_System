@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         //set different Layout
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));  //style 1
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));  //style 2
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));  //style 2
 
         //adapter
 //        FunctionAdapter adapter = new FunctionAdapter(this);
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_LOGIN){
             Toast
-                    .makeText(this,"歡迎光臨，登入成功。",Toast.LENGTH_SHORT)
+                    .makeText(this, "Welcome, login successfully.",Toast.LENGTH_SHORT)
                     .show();
             if (resultCode != RESULT_OK) {
                 finish();

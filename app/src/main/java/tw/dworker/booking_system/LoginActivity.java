@@ -31,7 +31,7 @@ import java.util.Date;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName(); //TAG
-    EditText mAccount;
+    private EditText mAccount;
     private EditText mPassword;
     CheckBox mCheck;
 
@@ -135,9 +135,9 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }else {
                             new AlertDialog.Builder(LoginActivity.this)
-                                    .setTitle("登入結果")
-                                    .setMessage("登入失敗")
-                                    .setPositiveButton("OK",null)
+                                    .setTitle("Login result")
+                                    .setMessage("Login failed")
+                                    .setPositiveButton("Confirm",null)
                                     .show();
                         }
 
