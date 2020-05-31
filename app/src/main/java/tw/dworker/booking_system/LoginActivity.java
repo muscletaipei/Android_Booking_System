@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.method.HideReturnsTransformationMethod;
@@ -18,7 +19,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,17 +38,23 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mAccount;
     private EditText mPassword;
     CheckBox mCheck;
+    private CheckBox mCheck_re_userid;
+    ViewFlipper v_flipper; //sider show
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mAccount = findViewById(R.id.mAccount);
+        mPassword = findViewById(R.id.mPassword);
+        mCheck = findViewById(R.id.mCheck);
+        mCheck_re_userid = findViewById(R.id.mCheck_re_userid);
 
         //Fragment
-        FragmentManager manager = getSupportFragmentManager();
+/*        FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
         fragmentTransaction.add(R.id.container_news, NewsFragment.getInstance());
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
         //set SharePreferences
         //存入 data
@@ -58,15 +68,35 @@ public class LoginActivity extends AppCompatActivity {
                 .getInt("LEVEL", 0);
         Log.d(TAG, "onCreate:" + level);
         //讀取data
+        mCheck_re_userid.setChecked(
+                getSharedPreferences("Booked",MODE_PRIVATE)
+                .getBoolean("REMEMBER_USERID",false));
+
+        mCheck_re_userid.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getSharedPreferences("Booked", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("REMEMBER_USERID",false)
+                        .apply();
+            }
+        });
         String userid = getSharedPreferences("Booked",MODE_PRIVATE)
                 .getString("USERID","");
         mAccount.setText(userid);
         //set SharePreferences
 
-        mAccount = findViewById(R.id.mAccount);
-        mPassword = findViewById(R.id.mPassword);
-        mCheck = findViewById(R.id.mCheck);
-
+        //sider show
+        int image[] = {R.drawable.food_1, R.drawable.food_2, R.drawable.food_3};
+        v_flipper = findViewById(R.id.v_flipper);
+        //for loop
+/*        for (int m=0; m<image.length; m++){
+            flipperImages(image[m]);*/
+        //I refer foreach
+        for (int images : image ){
+            flipperImages(images);
+        }
+        //sider show
         //判斷顯示密碼方法
         mCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -79,6 +109,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         //判斷顯示密碼方法
+    }
+    //sider show
+    public void flipperImages(int image){
+        ImageView imagview = new ImageView(this);
+        imagview.setBackgroundResource(image);
+        v_flipper.addView(imagview);
+        v_flipper.setFlipInterval(4000);//4sec
+        v_flipper.setAutoStart(true);
+        //animation
+        v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
+        v_flipper.setOutAnimation(this, android.R.anim.slide_out_right);
+
     }
 
     public void login(View view){
@@ -108,11 +150,15 @@ public class LoginActivity extends AppCompatActivity {
                         String pw = (String) dataSnapshot.getValue();
                         Log.i("Firebase Connected"," OK");
                         if (pw.equals(passwd)){
-                            // getSharePreferences: save user id 寫入先前已登入成功的userid
-                            getSharedPreferences("Booked",MODE_PRIVATE)
-                                    .edit()
-                                    .putString("USERID",userid)
-                                    .apply();
+                            boolean remember = getSharedPreferences("Booked",MODE_PRIVATE)
+                                    .getBoolean("REMEMBER_USERID",false);
+                            if (remember) {
+                                // getSharePreferences: save user id 寫入先前已登入成功的userid
+                                getSharedPreferences("Booked", MODE_PRIVATE)
+                                        .edit()
+                                        .putString("USERID", userid)
+                                        .apply();
+                            }
                             //  getSharePreferences: save user id 寫入先前已登入成功的userid
                             setResult(RESULT_OK);
 

@@ -3,6 +3,7 @@ package tw.dworker.booking_system;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.drawable.Icon;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     boolean logon = false; //進入主頁前判斷是否已登入
     private List<Function> functions;
+    MediaPlayer mediaPlayer; //Background music
     //    String[] functions = null;
 
     @Override
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Background music
+        mediaPlayer = MediaPlayer.create(this,R.raw.dreamwalking);
+        mediaPlayer.setLooping(true);
+        //Background music
 
         //判斷login回傳的值
         if (!logon){
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         //set different Layout
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));  //style 1
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));  //style 2
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));  //style 2
 
         //adapter
 //        FunctionAdapter adapter = new FunctionAdapter(this);
@@ -78,14 +84,15 @@ public class MainActivity extends AppCompatActivity {
     private void setupFunctions() {
         functions = new ArrayList<>();
         String[] funcs = getResources().getStringArray(R.array.functions);
-        functions.add(new Function(funcs[0],R.drawable.about));
-        functions.add(new Function(funcs[1],R.drawable.lab1));
-        functions.add(new Function(funcs[2],R.drawable.lab2));
-        functions.add(new Function(funcs[3],R.drawable.lab3));
-        functions.add(new Function(funcs[4],R.drawable.lab4));
-        functions.add(new Function(funcs[5],R.drawable.lab5));
-        functions.add(new Function(funcs[6],R.drawable.lab6));
-        functions.add(new Function(funcs[7],R.drawable.exit_icons));
+        functions.add(new Function(funcs[0],R.drawable.home));
+        functions.add(new Function(funcs[1],R.drawable.info));
+        functions.add(new Function(funcs[2],R.drawable.micro_sd));
+        functions.add(new Function(funcs[3],R.drawable.usb_2));
+        functions.add(new Function(funcs[4],R.drawable.lab10));
+        functions.add(new Function(funcs[5],R.drawable.meetingroom));
+        functions.add(new Function(funcs[6],R.drawable.resource));
+        functions.add(new Function(funcs[7],R.drawable.food_delivery));
+        functions.add(new Function(funcs[8],R.drawable.exit_icons));
     }
 
     //ViewHolder 類別
@@ -197,7 +204,25 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-/*    public void getBookedList(DataSnapshot dataSnapshot){
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        mediaPlayer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
+        mediaPlayer.release();
+    }
+    /*    public void getBookedList(DataSnapshot dataSnapshot){
         DataSnapshot lab1 = dataSnapshot.child("lab1");
         DataSnapshot lab2 = dataSnapshot.child("lab2");
         Calendar cal = Calendar.getInstance();
@@ -219,4 +244,5 @@ public class MainActivity extends AppCompatActivity {
             Log.i("equipment=", data.getValue().toString());
         }
     }*/
+
 }

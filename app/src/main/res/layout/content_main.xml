@@ -31,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
-        app:srcCompat="@drawable/d_icon" />
+        app:srcCompat="@drawable/booking_2" />
 
     <TextView
         android:id="@+id/mList"
