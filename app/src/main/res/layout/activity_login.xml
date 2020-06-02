@@ -19,17 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="85dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="75dp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_news"
-        app:srcCompat="@drawable/login" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_news"
         android:layout_width="414dp"
@@ -50,6 +39,17 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="-3dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="85dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="75dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_news"
+        app:srcCompat="@drawable/login" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

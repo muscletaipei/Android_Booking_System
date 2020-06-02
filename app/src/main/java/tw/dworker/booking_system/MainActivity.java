@@ -1,21 +1,17 @@
 package tw.dworker.booking_system;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.graphics.drawable.Icon;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.database.DataSnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -28,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Background music
-        mediaPlayer = MediaPlayer.create(this,R.raw.dreamwalking);
-        mediaPlayer.setLooping(true);
-        //Background music
 
         //判斷login回傳的值
         if (!logon){
@@ -57,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //判斷login回傳的值
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -79,20 +71,22 @@ public class MainActivity extends AppCompatActivity {
 //        FunctionAdapter adapter = new FunctionAdapter(this);
         IconAdapter adapter = new IconAdapter();
         recyclerView.setAdapter(adapter);
+
+        //Background music
+        mediaPlayer = MediaPlayer.create(this,R.raw.dreamwalking);
+        mediaPlayer.setLooping(true);
+        //Background music
     }
 
     private void setupFunctions() {
         functions = new ArrayList<>();
         String[] funcs = getResources().getStringArray(R.array.functions);
         functions.add(new Function(funcs[0],R.drawable.home));
-        functions.add(new Function(funcs[1],R.drawable.info));
-        functions.add(new Function(funcs[2],R.drawable.micro_sd));
-        functions.add(new Function(funcs[3],R.drawable.usb_2));
-        functions.add(new Function(funcs[4],R.drawable.lab10));
-        functions.add(new Function(funcs[5],R.drawable.meetingroom));
-        functions.add(new Function(funcs[6],R.drawable.resource));
-        functions.add(new Function(funcs[7],R.drawable.food_delivery));
-        functions.add(new Function(funcs[8],R.drawable.exit_icons));
+        functions.add(new Function(funcs[1],R.drawable.infomation));
+        functions.add(new Function(funcs[2],R.drawable.lab_booking_2));
+        functions.add(new Function(funcs[3],R.drawable.room_booking_1));
+        functions.add(new Function(funcs[4],R.drawable.task_1));
+        functions.add(new Function(funcs[5],R.drawable.exit));
     }
 
     //ViewHolder 類別
@@ -139,25 +133,19 @@ public class MainActivity extends AppCompatActivity {
     private void itemClicked(Function function) {
         Log.d(TAG, "itemClicked:" + function.getName());
         switch (function.getIcon()){
-            case R.drawable.lab1:
+            case R.drawable.home:
                 break;
-            case  R.drawable.lab2:
+            case R.drawable.infomation:
                 break;
-            case R.drawable.lab3:
+            case R.drawable.lab_booking_2:
+                Intent lab = new Intent(this,LabActivity.class);
+                startActivity(lab);
                 break;
-            case R.drawable.lab4:
+            case R.drawable.room_booking_1:
                 break;
-            case R.drawable.lab5:
+            case R.drawable.task_1:
                 break;
-            case R.drawable.lab6:
-                break;
-            case R.drawable.lab7:
-                break;
-            case R.drawable.lab8:
-                break;
-            case R.drawable.lab9:
-                break;
-            case R.drawable.exit_icons:
+            case R.drawable.exit:
                 finish();
                 break;
         }

@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 getSharedPreferences("Booked", MODE_PRIVATE)
                         .edit()
-                        .putBoolean("REMEMBER_USERID",false)
+                        .putBoolean("REMEMBER_USERID",isChecked)
                         .apply();
             }
         });
@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         //set SharePreferences
 
         //sider show
-        int image[] = {R.drawable.food_1, R.drawable.food_2, R.drawable.food_3};
+        int image[] = {R.drawable.info_1, R.drawable.info_2};
         v_flipper = findViewById(R.id.v_flipper);
         //for loop
 /*        for (int m=0; m<image.length; m++){
