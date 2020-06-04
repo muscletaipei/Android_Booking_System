@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.mPassword);
         mCheck = findViewById(R.id.mCheck);
         mCheck_re_userid = findViewById(R.id.mCheck_re_userid);
+        findViewById(R.id.loading_login_pb).setVisibility(View.GONE);
 
         //Fragment
 /*        FragmentManager manager = getSupportFragmentManager();

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        findViewById(R.id.loading_main_pb).setVisibility(View.GONE);
 
         //判斷login回傳的值
         if (!logon){
@@ -142,8 +142,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(lab);
                 break;
             case R.drawable.room_booking_1:
+                Intent room = new Intent(this,RoomActivity.class);
+                startActivity(room);
                 break;
             case R.drawable.task_1:
+                Intent task = new Intent(this,TaskListActivity.class);
+                startActivity(task);
                 break;
             case R.drawable.exit:
                 finish();

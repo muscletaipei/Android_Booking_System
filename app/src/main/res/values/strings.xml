@@ -36,7 +36,7 @@
     <string name="add_str5">Input information</string>
     <string name="add_str6">Add</string>
     <string name="add_str7">Booking LAB</string>
-    <string name="add_str8">Back to LAB</string>
+    <string name="add_str8">Back</string>
     <string name="add_str9">ex:2020-01-01</string>
     <string name="add_str10">Add successfully</string>
     <string name="add_str11">Add failed</string>
@@ -48,5 +48,14 @@
     <string name="room_str3">ex: room-A</string>
     <string name="room_str4">Modify</string>
     <string name="room_str5">Delete</string>
+    <string name="task_str1">Tasks</string>
+    <string name="task_str2">Target</string>
+    <string name="task_str3">Action</string>
+    <string name="task_str4">Owner</string>
+    <string name="task_str5">Time(hr)</string>
+    <string name="task_str6">The new task has been</string>
+    <string name="task_str7">Date</string>
+    <string name="task_str8">inserted successfully</string>
+    <string name="title_activity_task_list2">Task Resource</string>
 
 </resources>
