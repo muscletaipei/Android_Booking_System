@@ -56,6 +56,10 @@
     <string name="task_str6">The new task has been</string>
     <string name="task_str7">Date</string>
     <string name="task_str8">inserted successfully</string>
+    <string name="task_str9">Update</string>
+    <string name="task_str10">Task record has been updated successfully</string>
+    <string name="task_str11">Task record has been delete successfully</string>
     <string name="title_activity_task_list2">Task Resource</string>
+    <string name="title_activity_task_detail">Task Resource</string>
 
 </resources>

@@ -33,7 +33,6 @@ public class TaskListActivity extends AppCompatActivity {
         new FirebaseDatabaseHelper().readTasks(new FirebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Task> tasks, List<String> keys) {
-                findViewById(R.id.loading_task_pb).setVisibility(View.GONE);
                 new RecyclerViewTask().setConfig(mRecyclerView,TaskListActivity.this,tasks,keys);
             }
 
