@@ -43,6 +43,7 @@
     <string name="add_str12">Phone No.</string>
     <string name="add_str13">Owner</string>
     <string name="add_str14">ex:0912123123</string>
+    <string name="add_str15">Booking_time</string>
     <string name="room_str1">Booking Room</string>
     <string name="room_str2">Meeting Room</string>
     <string name="room_str3">ex: room-A</string>
