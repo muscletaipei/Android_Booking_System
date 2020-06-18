@@ -1,7 +1,9 @@
 package tw.dworker.booking_system;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -134,8 +136,14 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "itemClicked:" + function.getName());
         switch (function.getIcon()){
             case R.drawable.home:
+                Uri uri = Uri.parse("https://csie.niu.edu.tw/");
+                Intent home = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(home);
                 break;
             case R.drawable.infomation:
+                Uri uri1 = Uri.parse("https://property.niu.edu.tw/ezfiles/5/1005/img/297/166451600.pdf");
+                Intent information = new Intent(Intent.ACTION_VIEW, uri1);
+                startActivity(information);
                 break;
             case R.drawable.lab_booking_2:
                 Intent lab = new Intent(this,LabActivity.class);

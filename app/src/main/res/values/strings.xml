@@ -30,7 +30,7 @@
     <string name="str18">Welcome, login successfully.</string>
     <string name="title_activity_lab">Lab_Booking</string>
     <string name="add_str1">LAB</string>
-    <string name="add_str2">ex: lab-1</string>
+    <string name="add_str2">ex: LAB-1</string>
     <string name="add_str3">Booking_Date</string>
     <string name="add_str4">Info</string>
     <string name="add_str5">Input information</string>
@@ -46,7 +46,7 @@
     <string name="add_str15">Booking_time</string>
     <string name="room_str1">Booking Room</string>
     <string name="room_str2">Meeting Room</string>
-    <string name="room_str3">ex: room-A</string>
+    <string name="room_str3">ex: ROOM-1</string>
     <string name="room_str4">Modify</string>
     <string name="room_str5">Delete</string>
     <string name="task_str1">Tasks</string>
